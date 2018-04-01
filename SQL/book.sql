@@ -1,0 +1,1 @@
+INSERT INTO `book` VALUES ('1001', '3302');
