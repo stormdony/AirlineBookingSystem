@@ -33,34 +33,33 @@ public class CustomerFlightInfoUi implements ActionListener {
 		int i = flights.size();
 		System.out.println("i=" + i);
 		if (i <= 0) {
-			// µ¯³öÃ»ÓÐ¶©µ¥µÄ»­Ãæ
+			// å¼¹å‡ºæ²¡æœ‰è®¢å•çš„ç”»é¢
 			new CustomerNoFlightUi();
 		} else {
-			frame = new JFrame("²éÑ¯½á¹û");
+			frame = new JFrame("æŸ¥è¯¢ç»“æžœ");
 			Container container = frame.getContentPane();
 			JPanel pan = new JPanel();
-			// º½°à(º½°à±àºÅ(Ö÷Âë),·É»úÃû³Æ,Æðµã,ÖÕµã,º½°àµÈ¼¶,Æ±¼Û,ÕÛ¿Û)
-			JLabel Jid = new JLabel("º½°à±àºÅ");
-			JLabel Jname = new JLabel("º½°àÃû³Æ");
-			JLabel Jstart = new JLabel("Æðµã");
-			JLabel Jdestination = new JLabel("ÖÕµã");
-			JLabel Jgrade = new JLabel("º½°àµÈ¼¶");
-			JLabel Jprice = new JLabel("Æ±¼Û");
-			JLabel Jbegin = new JLabel("Æð·ÉÊ±¼ä");
-			JLabel Jend = new JLabel("µ½´ïÊ±¼ä");
-			JLabel Jdiscount = new JLabel("ÕÛ¿Û");
-			JLabel Jpayment = new JLabel("ÊÇ·ñ¸¶¿î");
-			JLabel Jbook = new JLabel("ÊÇ·ñÍË¶©");
-			JLabel Jsele = new JLabel("Ñ¡¶¨");
-			JButton topay = new JButton("¸¶¿î");
-			JButton tobook = new JButton("ÍË¶©");
+			// èˆªç­(èˆªç­ç¼–å·(ä¸»ç ),é£žæœºåç§°,èµ·ç‚¹,ç»ˆç‚¹,èˆªç­ç­‰çº§,ç¥¨ä»·,æŠ˜æ‰£)
+			JLabel Jid = new JLabel("èˆªç­ç¼–å·");
+			JLabel Jname = new JLabel("èˆªç­åç§°");
+			JLabel Jstart = new JLabel("èµ·ç‚¹");
+			JLabel Jdestination = new JLabel("ç»ˆç‚¹");
+			JLabel Jgrade = new JLabel("èˆªç­ç­‰çº§");
+			JLabel Jprice = new JLabel("ç¥¨ä»·");
+			JLabel Jbegin = new JLabel("èµ·é£žæ—¶é—´");
+			JLabel Jend = new JLabel("åˆ°è¾¾æ—¶é—´");
+			JLabel Jdiscount = new JLabel("æŠ˜æ‰£");
+			JLabel Jpayment = new JLabel("æ˜¯å¦ä»˜æ¬¾");
+			JLabel Jbook = new JLabel("æ˜¯å¦é€€è®¢");
+			JLabel Jsele = new JLabel("é€‰å®š");
+			JButton topay = new JButton("ä»˜æ¬¾");
+			JButton tobook = new JButton("é€€è®¢");
 			
 			topay.addActionListener(this);
 			tobook.addActionListener(this);
 			ButtonGroup group = new ButtonGroup();
-
 			pan.setLayout(new GridLayout(i + 3, 14, 10, 10));
-			// ¶¥ÐÐ¿Õ°×ÐÐ
+			// é¡¶è¡Œç©ºç™½è¡Œ
 			for (int j = 0; j < 14; j++) {
 				pan.add(new Label());
 			}
@@ -128,21 +127,21 @@ public class CustomerFlightInfoUi implements ActionListener {
 				try {
 					ticket = tickets.get(j);
 				} catch (Exception e) {
-					System.out.println("³ö´íÁË");
-					new FailUi("ÏµÍ³·±Ã¦,ÉÔºóÖØÊÔ!");
+					System.out.println("å‡ºé”™äº†");
+					new FailUi("ç³»ç»Ÿç¹å¿™,ç¨åŽé‡è¯•!");
 					// e.printStackTrace();
 				}
 				pay = ticket.getPayment();
 				rebook = ticket.getRebook();
 				if ("1".equals(pay)) {
-					payment.setText("ÒÑÖ§¸¶");
+					payment.setText("å·²æ”¯ä»˜");
 				} else if ("0".equals(pay)) {
-					payment.setText("´ý¸¶¿î");
+					payment.setText("å¾…ä»˜æ¬¾");
 				}
 				if ("1".equals(rebook)) {
-					book.setText("ÒÑÍË¶©");
+					book.setText("å·²é€€è®¢");
 				} else if ("0".equals(rebook)) {
-					book.setText("Î´ÍË¶©");
+					book.setText("æœªé€€è®¢");
 				}
 				pan.add(new Label());
 				pan.add(id);
@@ -187,39 +186,39 @@ public class CustomerFlightInfoUi implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		if (e.getActionCommand() == "¸¶¿î") {
+		if (e.getActionCommand() == "ä»˜æ¬¾") {
 			if ("0".equals(pay)) {
 				try {
 					boolean topay = CustomerMyorderUtils.topay(fid);
 					if (topay) {
-						new SuccessUi("¸¶¿î³É¹¦£¡£¡£¡");
+						new SuccessUi("ä»˜æ¬¾æˆåŠŸï¼ï¼ï¼");
 						frame.dispose();
 					} else {
-						new FailUi("ÏµÍ³·±Ã¦£¬ÇëÉÔºóÖØÊÔ£¡");
+						new FailUi("ç³»ç»Ÿç¹å¿™ï¼Œè¯·ç¨åŽé‡è¯•ï¼");
 						frame.dispose();
 					}
 				} catch (SQLException e1) {
 					e1.printStackTrace();
 				}
 			}else {
-				new FailUi("ÄãÒÑ¸¶¿î£¬ÎÞÐèÖØ¸´²Ù×÷£¡");
+				new FailUi("ä½ å·²ä»˜æ¬¾ï¼Œæ— éœ€é‡å¤æ“ä½œï¼");
 			}
-		} else if (e.getActionCommand() == "ÍË¶©") {
+		} else if (e.getActionCommand() == "é€€è®¢") {
 			if ("0".equals(rebook)) {
 				try {
 					boolean rebook = CustomerMyorderUtils.tobook(fid);
 					if (rebook) {
-						new SuccessUi("ÍË¶©³É¹¦£¡£¡£¡");
+						new SuccessUi("é€€è®¢æˆåŠŸï¼ï¼ï¼");
 						frame.dispose();
 					} else {
-						new FailUi("ÏµÍ³·±Ã¦£¬ÇëÉÔºóÖØÊÔ£¡");
+						new FailUi("ç³»ç»Ÿç¹å¿™ï¼Œè¯·ç¨åŽé‡è¯•ï¼");
 						frame.dispose();
 					}
 				} catch (SQLException e1) {
 					e1.printStackTrace();
 				}
 			}else {
-				new FailUi("ÄãÒÑÍË¶©£¬ÎÞÐèÖØ¸´²Ù×÷£¡");
+				new FailUi("ä½ å·²é€€è®¢ï¼Œæ— éœ€é‡å¤æ“ä½œï¼");
 			}
 		}
 	}
