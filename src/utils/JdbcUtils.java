@@ -13,9 +13,9 @@ import java.sql.Statement;
  *
  */
 public class JdbcUtils {
-	// 获取连接
+	// 
 	public static Connection getConnection() throws ClassNotFoundException, SQLException {
-		// 注册驱动
+		// 
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/plane?useSSL=true", "root",
 				"123456");
@@ -23,7 +23,7 @@ public class JdbcUtils {
 	}
 
 	/**
-	 * 释放资源
+	 * 
 	 * 
 	 * @param con
 	 * @param stmts
@@ -36,7 +36,7 @@ public class JdbcUtils {
 	}
 
 	/**
-	 * 释放连接
+	 * 
 	 * 
 	 * @param connection
 	 */
@@ -47,12 +47,12 @@ public class JdbcUtils {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-		// 快速释放资源
+		// 
 		con = null;
 	}
 
 	/**
-	 * 释放连接
+	 *
 	 * 
 	 * @param Statement
 	 */
@@ -63,12 +63,12 @@ public class JdbcUtils {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-		// 快速释放资源
+		// 
 		stms = null;
 	}
 
 	/**
-	 * 释放连接
+	 * 
 	 * 
 	 * @param ResultSet
 	 */
@@ -80,7 +80,7 @@ public class JdbcUtils {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		// 快速释放资源
+		// 
 		rs = null;
 	}
 }
